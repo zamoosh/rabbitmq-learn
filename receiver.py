@@ -25,7 +25,7 @@ def recv_2():
         print(f" [Y][q2] Received {body.decode('ascii')}")
         channel.basic_ack(delivery_tag=method.delivery_tag)
 
-    # channel.queue_declare(queue='q2')
+    channel.queue_declare(queue='q2')
     channel.basic_consume(queue='q2', on_message_callback=callback)
     channel.start_consuming()
 
